@@ -3,11 +3,25 @@
     x:Class="MauiApp1.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiApp1"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Unloaded="ContentPage_Unloaded">
 
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="25">
+
+            <ActivityIndicator
+                HeightRequest="40"
+                HorizontalOptions="Center"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="Center"
+                WidthRequest="40" />
+
             <Image
                 Aspect="AspectFit"
                 HeightRequest="185"
@@ -17,30 +31,31 @@
             <toolkit:MediaElement
                 x:Name="uxMediaElement"
                 HeightRequest="250"
-                IsVisible="False"
+                IsVisible="{Binding ShowMediaElement}"
                 ShouldAutoPlay="True"
                 ShouldLoopPlayback="True"
                 ShouldShowPlaybackControls="False"
+                Source="{Binding Source}"
                 WidthRequest="250" />
 
             <Button
                 x:Name="DownloadVideoButton"
-                Clicked="OnCounterClicked"
+                Command="{Binding DownloadVideoCommand}"
                 HorizontalOptions="Fill"
                 Text="Download Video" />
 
             <Button
                 x:Name="PlayVideoButton"
-                Clicked="PlayVideoButton_Clicked"
+                Command="{Binding PlayVideoCommand}"
                 HorizontalOptions="Fill"
-                IsVisible="False"
+                IsVisible="{Binding ShowPlayVideoButton}"
                 Text="Play Video" />
 
             <Button
                 x:Name="Button3"
-                Clicked="Button3_Clicked"
+                Command="{Binding NavigateCommand}"
                 HorizontalOptions="Fill"
-                IsVisible="False"
+                IsVisible="{Binding ShowNavigateButton}"
                 Text="Navigate to Root" />
 
         </VerticalStackLayout>
