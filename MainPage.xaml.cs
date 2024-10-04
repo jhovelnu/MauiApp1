@@ -20,6 +20,13 @@
 
             SemanticScreenReader.Announce(CounterBtn.Text);
         }
+
+        private async void NavigateToWebViewBtn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new WebViewPage());
+        }
+
+        
     }
 
 }

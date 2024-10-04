@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiApp1.WebViewPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="uxMyWebView"
+    Title="WebViewPage">
+
+    <Grid ColumnDefinitions="*, Auto, Auto" RowDefinitions="Auto, *">
+
+        <Entry
+            x:Name="uxEntry"
+            Grid.Row="0"
+            Grid.Column="0"
+            Placeholder="Enter the url to navigate" />
+
+        <Button
+            Grid.Row="0"
+            Grid.Column="1"
+            Clicked="Button_Clicked"
+            Text="GO" />
+
+        <Button
+            x:Name="NavigateToBrowserBtn"
+            Grid.Row="0"
+            Grid.Column="2"
+            Clicked="NavigateToBrowserBtn_Clicked"
+            HorizontalOptions="Fill"
+            SemanticProperties.Hint="Open a browser"
+            Text="Open Browser" />
+
+        <WebView
+            x:Name="uxWebView"
+            Grid.Row="2"
+            Grid.ColumnSpan="3"
+            HorizontalOptions="FillAndExpand"
+            IsVisible="False" />
+
+    </Grid>
+
+</ContentPage>
